@@ -16,7 +16,6 @@ namespace ConsoleAppHangman
             {
                 GuessTheWord();
             }
-
         }//end of Program
 
         private static string RandomWord()
@@ -29,19 +28,11 @@ namespace ConsoleAppHangman
             string theWord = randWord.ToUpper();
 
             return theWord;
-
-
         }//end of RandomWords
-
-
-
 
         static void GuessTheWord()
         {
             string theWord = RandomWord();
-            Console.WriteLine($"Random word is: {theWord}");
-            Console.ReadKey(true);
-
             StringBuilder hiddenWord = new StringBuilder();
             for (int i = 0; i < theWord.Length; i++)
             {
@@ -91,7 +82,7 @@ namespace ConsoleAppHangman
                         }
                     }
 
-                    Console.WriteLine($"\n\nGuess the word -->  {hiddenWord}");
+                    Console.WriteLine($"\n\nGuess the word, {theWord.Length} letters long -->  {hiddenWord}");
 
 
 
