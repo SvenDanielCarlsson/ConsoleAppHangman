@@ -55,16 +55,15 @@ namespace ConsoleAppHangman
             List<string> badWords = new List<string>();
 
 
-            // time for the player
             while (!won && playerLives > 0)
             {
                 do
                 {
                     Console.Clear();
                     Console.WriteLine("Enter ONE letter or type the WHOLE word\n\n" +
-                                      "\nTries left: " +playerLives);
+                                      "\nTries left: " + playerLives);
 
-                    if(badWords.Count > 0)
+                    if (badWords.Count > 0)
                     {
                         Console.Write("Wrong words: ");
                         for (int i = 0; i < badWords.Count; i++)
@@ -83,17 +82,14 @@ namespace ConsoleAppHangman
                     }
 
                     Console.WriteLine($"\n\nGuess the word, {theWord.Length} letters long -->  {hiddenWord}");
-
-
-
                     userInput = Console.ReadLine().ToUpper();
-
                 } while (userInput == "");
 
                 letterGuess = userInput[0];
                 Console.Clear();
 
-                if(badWords.Contains(userInput))
+
+                if (badWords.Contains(userInput))
                 {
                     Console.WriteLine($"You have already guessed: {userInput}\nPress any key to continue");
                     Console.ReadKey();
@@ -105,21 +101,20 @@ namespace ConsoleAppHangman
                     badWords.Add(userInput);
                     playerLives--;
                 }
-                else if (userInput != theWord && userInput.Length != 1)
+                else if (userInput != theWord && userInput.Length != 1) //wrong amount of characters
                 {
                     Console.WriteLine("Please enter only ONE letter or the WHOLE word\nPress any key to continue");
                     Console.ReadKey(true);
                 }
+
                 else if (theWord == userInput)
                 { won = true; }
 
-                else if (goodGuesses.Contains(letterGuess))
-                //if (Array.Exists(goodGuesses, element => element == letterGuess))
+                else if (goodGuesses.Contains(letterGuess)) //else if (Array.Exists(goodGuesses, element => element == letterGuess))
                 {
                     Console.WriteLine("You have already guessed: " + letterGuess);
                     Console.ReadKey();
                 }
-
                 else if (theWord.Contains(letterGuess)) //Good guess
                 {
                     for (int i = 0; i < theWord.Length; i++)
@@ -146,12 +141,9 @@ namespace ConsoleAppHangman
                     badGuesses = allBadGuesses.ToString();
                     playerLives--;
                 }
-
-
-
             }//end of while not won or lost
 
-            if (won == true) //Won the game
+            if (won == true)
             {
                 Console.WriteLine($"Congratulations!\nYou figured out it was {theWord}!");
                 while (endLoop == false)
